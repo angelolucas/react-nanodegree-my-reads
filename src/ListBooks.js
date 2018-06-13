@@ -24,7 +24,7 @@ class ListBooks extends React.Component {
         </div>
         <div className="list-books-content">
           {this.state.ready === true && (
-            <BookShelf books={this.state.books} />
+            <BookShelf shelf="currentlyReading" books={this.state.books} />
           )}
         </div>
         <div className="open-search">
