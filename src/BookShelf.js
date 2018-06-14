@@ -1,6 +1,9 @@
 import React from 'react'
 
 class BookShelf extends React.Component {
+  handleShelf = (BookId, e) => {
+    this.props.onChangeShelf(BookId, e);
+  }
   render() {
     return (
       <div className="bookshelf">
@@ -21,7 +24,7 @@ class BookShelf extends React.Component {
                           backgroundImage: `url(${book.imageLinks.thumbnail})`
                       }} />
                       <div className="book-shelf-changer">
-                        <select>
+                        <select onChange={(e) => this.handleShelf(book.id, e)} value={this.props.shelf}>
                           <option value="move" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
