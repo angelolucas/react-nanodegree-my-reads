@@ -34,7 +34,7 @@ class BooksApp extends React.Component {
           <SearchBooks onChangeShelf={this.changeShelf} />
         )} />
         {this.state.ready && (
-          <Route exact path="/" render={() => (
+          <Route path="/" render={() => (
             <MyReads books={this.state.books} onChangeShelf={this.changeShelf} />
           )} />
         )}

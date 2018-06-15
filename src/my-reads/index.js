@@ -11,8 +11,9 @@ class MyReads extends React.Component {
   render() {
     return (
       <div className="my-reads">
-        <div className="my-reads-title">
-          <h1>MyReads</h1>
+        <div className="my-reads-head">
+          <h1 className="my-reads-title">MyReads</h1>
+          <Link className="open-search" to="/search">Add a book</Link>
         </div>
         <div className="my-reads-content">
           <BookShelf
@@ -30,9 +31,6 @@ class MyReads extends React.Component {
             onChangeShelf={this.handleShelf}
             books={this.props.books.filter(book => book.shelf === 'read')}
           />
-        </div>
-        <div className="open-search">
-          <Link to="/search">Add a book</Link>
         </div>
       </div>
     )

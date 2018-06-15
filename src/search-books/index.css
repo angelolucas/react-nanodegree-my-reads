@@ -5,18 +5,22 @@
   left: 0;
   z-index: 5;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  background: #2e7c31;
 }
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
 }
 .search-books-bar input {
+  background: transparent;
   width: 100%;
-  padding: 15px 10px;
+  padding: 14px 10px 13px;
   font-size: 1.25em;
   border: none;
   outline: none;
+  color: white;
+}
+.search-books-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .close-search {
@@ -24,8 +28,7 @@
   top: 20px;
   left: 15px;
   width: 50px;
-  height: 53px;
-  background: white;
+  height: 50px;
   background-image: url('../icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;

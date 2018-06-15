@@ -10,8 +10,14 @@ class SearchBooks extends React.Component {
     books: [],
     status: false
   }
+  selector = {
+    body: document.querySelector('body')
+  }
   componentDidMount() {
     this.searchInput.focus();
+  }
+  componentWillUnmount() {
+    this.selector.body.classList.remove('hide-my-reads');
   }
   handleShelf = (BookId, shelf) => {
     this.props.onChangeShelf(BookId, shelf);
@@ -20,10 +26,13 @@ class SearchBooks extends React.Component {
     if (e.target.value.length > 0) {
       BooksAPI.search(e.target.value).then((books) => {
         if (books.error === "empty query") {
+          this.selector.body.classList.add('hide-my-reads');
           this.setState({
             status: 'noResult'
           })
         } else {
+          window.scrollTo(0, 0);
+          this.selector.body.classList.add('hide-my-reads');
           this.setState({
             books,
             status: 'result'
@@ -31,6 +40,8 @@ class SearchBooks extends React.Component {
         }
       })
     } else {
+      this.selector.body.classList.remove('hide-my-reads');
+
       this.setState({
         status: ''
       })
@@ -50,20 +61,20 @@ class SearchBooks extends React.Component {
             />
           </div>
         </div>
-        <div className="search-books-results">
-          { this.state.status === "result" &&
+        { this.state.status === "result" &&
+          <div className="search-books-results">
             <BookCards
               books={this.state.books}
               onChangeShelf={this.handleShelf}
             />
-          }
-          { this.state.status === "noResult" &&
-            <div>
-              <h2>No Results</h2>
-              <p><strong>Suggestions:</strong> Android, Art, Artificial Intelligence, Astronomy, Austen, Baseball, Basketball, Bhagat, Biography, Brief, Business, Camus, Cervantes, Christie, Classics, Comics, Cook, Cricket, Cycling, Desai, Design, Development, Digital Marketing, Drama, Drawing, Dumas, Education, Everything, Fantasy, Film, Finance, First, Fitness, Football, Future, Games, Gandhi, Homer, Horror, Hugo, Ibsen, Journey, Kafka, King, Lahiri, Larsson, Learn, Literary Fiction, Make, Manage, Marquez, Money, Mystery, Negotiate, Painting, Philosophy, Photography, Poetry, Production, Programming, React, Redux, River, Robotics, Rowling, Satire, Science Fiction, Shakespeare, Singh, Swimming, Tale, Thrun, Time, Tolstoy, Travel, Ultimate, Virtual Reality, Web Development, iOS</p>
-            </div>
-          }
-        </div>
+          </div>
+        }
+        { this.state.status === "noResult" &&
+          <div className="search-books-results">
+            <h2>No Results</h2>
+            <p><strong>Suggestions:</strong> Android, Art, Artificial Intelligence, Astronomy, Austen, Baseball, Basketball, Bhagat, Biography, Brief, Business, Camus, Cervantes, Christie, Classics, Comics, Cook, Cricket, Cycling, Desai, Design, Development, Digital Marketing, Drama, Drawing, Dumas, Education, Everything, Fantasy, Film, Finance, First, Fitness, Football, Future, Games, Gandhi, Homer, Horror, Hugo, Ibsen, Journey, Kafka, King, Lahiri, Larsson, Learn, Literary Fiction, Make, Manage, Marquez, Money, Mystery, Negotiate, Painting, Philosophy, Photography, Poetry, Production, Programming, React, Redux, River, Robotics, Rowling, Satire, Science Fiction, Shakespeare, Singh, Swimming, Tale, Thrun, Time, Tolstoy, Travel, Ultimate, Virtual Reality, Web Development, iOS</p>
+          </div>
+        }
       </div>
     )
   }
