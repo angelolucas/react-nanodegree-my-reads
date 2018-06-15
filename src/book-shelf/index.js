@@ -1,5 +1,6 @@
 import React from 'react'
-import BookSummaryCards from './BookSummaryCards'
+import BookSummaryCards from '../BookSummaryCards'
+import './index.css'
 
 class BookShelf extends React.Component {
   handleShelf = (BookId, shelf) => {
