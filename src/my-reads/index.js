@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import BookShelf from '../book-shelf'
 import './index.css'
 
@@ -36,6 +37,11 @@ class MyReads extends React.Component {
       </div>
     )
   }
+}
+
+MyReads.propTypes = {
+  books: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired
 }
 
 export default MyReads
