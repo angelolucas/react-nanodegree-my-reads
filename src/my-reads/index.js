@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import BookShelf from './BookShelf'
+import BookShelf from '../BookShelf'
+import './index.css'
 
-class ListBooks extends React.Component {
+class MyReads extends React.Component {
   handleShelf = (BookId, shelf) => {
     this.props.onChangeShelf(BookId, shelf)
   }
   render() {
     return (
-      <div className="list-books">
-        <div className="list-books-title">
+      <div className="my-reads">
+        <div className="my-reads-title">
           <h1>MyReads</h1>
         </div>
-        <div className="list-books-content">
+        <div className="my-reads-content">
           <BookShelf
             title="Currently Reading"
             shelf="currentlyReading"
@@ -40,4 +41,4 @@ class ListBooks extends React.Component {
   }
 }
 
-export default ListBooks
+export default MyReads
