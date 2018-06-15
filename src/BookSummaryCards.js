@@ -1,8 +1,8 @@
 import React from 'react'
 
 class BookSummaryCards extends React.Component {
-  handleShelf = (BookId, e) => {
-    this.props.onChangeShelf(BookId, e);
+  handleShelf = (BookId, shelf) => {
+    this.props.onChangeShelf(BookId, shelf)
   }
   render() {
     const books = this.props.books
@@ -21,7 +21,9 @@ class BookSummaryCards extends React.Component {
                     backgroundImage: `url(${book.imageLinks.thumbnail})`
                 }} />
                 <div className="book-shelf-changer">
-                  <select onChange={(e) => this.handleShelf(book.id, e)} value={book.shelf}>
+                  <select
+                    onChange={(e) => this.handleShelf(book.id, e.target.value)}
+                    value={book.shelf ? book.shelf : 'none'}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>

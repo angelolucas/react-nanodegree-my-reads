@@ -2,8 +2,8 @@ import React from 'react'
 import BookSummaryCards from './BookSummaryCards'
 
 class BookShelf extends React.Component {
-  handleShelf = (BookId, e) => {
-    this.props.onChangeShelf(BookId, e);
+  handleShelf = (BookId, shelf) => {
+    this.props.onChangeShelf(BookId, shelf)
   }
   render() {
     const books = this.props.books.filter(book => book.shelf === this.props.shelf);

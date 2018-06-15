@@ -21,9 +21,7 @@ class BooksApp extends React.Component {
       })
     })
   }
-  changeShelf = (bookId, e) => {
-    const shelf = e.target.value
-
+  changeShelf = (bookId, shelf) => {
     BooksAPI.get(bookId).then((book) => {
       BooksAPI.update(book, shelf)
       this.getBooks()
@@ -32,7 +30,9 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route path="/search" component={SearchBooks} />
+        <Route path="/search" render={() => (
+          <SearchBooks onChangeShelf={this.changeShelf} />
+        )} />
         {this.state.ready === true && (
           <Route exact path="/" render={() => (
             <ListBooks books={this.state.books} onChangeShelf={this.changeShelf} />

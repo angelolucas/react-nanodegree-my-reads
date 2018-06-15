@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
 
 class ListBooks extends React.Component {
-  handleShelf = (BookId, e) => {
-    this.props.onChangeShelf(BookId, e);
+  handleShelf = (BookId, shelf) => {
+    this.props.onChangeShelf(BookId, shelf)
   }
   render() {
     return (

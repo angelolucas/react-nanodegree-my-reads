@@ -11,6 +11,9 @@ class SearchBooks extends React.Component {
   componentDidMount() {
     this.searchInput.focus();
   }
+  handleShelf = (BookId, shelf) => {
+    this.props.onChangeShelf(BookId, shelf);
+  }
   handlerSearch = (e) => {
     if (e.target.value.length > 0) {
       BooksAPI.search(e.target.value).then((books) => {
@@ -47,7 +50,10 @@ class SearchBooks extends React.Component {
         </div>
         <div className="search-books-results">
           { this.state.status === "result" &&
-            <BookSummaryCards books={this.state.books} />
+            <BookSummaryCards
+              books={this.state.books}
+              onChangeShelf={this.handleShelf}
+            />
           }
           { this.state.status === "noResult" &&
             <div>
