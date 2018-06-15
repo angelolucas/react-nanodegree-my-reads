@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './search-books'
 import MyReads from './my-reads'
-import './App.css'
 
 class BooksApp extends React.Component {
   state = {
