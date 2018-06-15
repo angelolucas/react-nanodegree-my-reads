@@ -16,21 +16,18 @@ class MyReads extends React.Component {
         <div className="my-reads-content">
           <BookShelf
             title="Currently Reading"
-            shelf="currentlyReading"
-            books={this.props.books}
             onChangeShelf={this.handleShelf}
+            books={this.props.books.filter(book => book.shelf === 'currentlyReading')}
           />
           <BookShelf
             title="Want to Read"
-            shelf="wantToRead"
-            books={this.props.books}
             onChangeShelf={this.handleShelf}
+            books={this.props.books.filter(book => book.shelf === 'wantToRead')}
           />
           <BookShelf
             title="Read"
-            shelf="read"
-            books={this.props.books}
             onChangeShelf={this.handleShelf}
+            books={this.props.books.filter(book => book.shelf === 'read')}
           />
         </div>
         <div className="open-search">
