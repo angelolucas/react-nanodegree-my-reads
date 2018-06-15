@@ -14,7 +14,7 @@ class SearchBooks extends React.Component {
   handleShelf = (BookId, shelf) => {
     this.props.onChangeShelf(BookId, shelf);
   }
-  handlerSearch = (e) => {
+  handleSearch = (e) => {
     if (e.target.value.length > 0) {
       BooksAPI.search(e.target.value).then((books) => {
         if (books.error === "empty query") {
@@ -44,7 +44,7 @@ class SearchBooks extends React.Component {
               type="text"
               placeholder="Search by title or author"
               ref={(searchInput) => { this.searchInput = searchInput}}
-              onChange={this.handlerSearch}
+              onChange={this.handleSearch}
             />
           </div>
         </div>
