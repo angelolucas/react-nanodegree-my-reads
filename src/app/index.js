@@ -1,8 +1,9 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-import SearchBooks from './search-books'
-import MyReads from './my-reads'
+import * as BooksAPI from '../BooksAPI'
+import SearchBooks from '../search-books'
+import MyReads from '../my-reads'
+import './index.css'
 
 class BooksApp extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class BooksApp extends React.Component {
         <Route path="/search" render={() => (
           <SearchBooks onChangeShelf={this.changeShelf} />
         )} />
-        {this.state.ready === true && (
+        {this.state.ready && (
           <Route exact path="/" render={() => (
             <MyReads books={this.state.books} onChangeShelf={this.changeShelf} />
           )} />
