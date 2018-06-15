@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
-import BookSummaryCards from '../BookSummaryCards';
+import BookCards from '../book-cards';
 import './index.css'
 
 class SearchBooks extends React.Component {
@@ -51,7 +51,7 @@ class SearchBooks extends React.Component {
         </div>
         <div className="search-books-results">
           { this.state.status === "result" &&
-            <BookSummaryCards
+            <BookCards
               books={this.state.books}
               onChangeShelf={this.handleShelf}
             />

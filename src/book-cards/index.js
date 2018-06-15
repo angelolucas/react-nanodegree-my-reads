@@ -1,6 +1,7 @@
 import React from 'react'
+import './index.css'
 
-class BookSummaryCards extends React.Component {
+class BookCards extends React.Component {
   handleShelf = (BookId, shelf) => {
     this.props.onChangeShelf(BookId, shelf)
   }
@@ -42,4 +43,4 @@ class BookSummaryCards extends React.Component {
   }
 }
 
-export default BookSummaryCards
+export default BookCards

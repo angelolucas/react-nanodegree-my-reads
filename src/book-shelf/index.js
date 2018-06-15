@@ -1,5 +1,5 @@
 import React from 'react'
-import BookSummaryCards from '../BookSummaryCards'
+import BookCards from '../book-cards'
 import './index.css'
 
 class BookShelf extends React.Component {
@@ -13,7 +13,7 @@ class BookShelf extends React.Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
-          <BookSummaryCards
+          <BookCards
             books={books}
             onChangeShelf={this.handleShelf}
           />
