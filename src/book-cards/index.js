@@ -15,13 +15,14 @@ class BookCards extends React.Component {
           <li key={key}>
             <div className="book">
               <div className="book-top">
-                <div
-                  className="book-cover"
-                  style={{
-                    width: 128,
-                    height: 192,
-                    backgroundImage: `url(${book.imageLinks.thumbnail})`
-                }} />
+                {book.imageLinks ? (
+                  <div
+                    className="book-cover"
+                    style={{backgroundImage: `url(${book.imageLinks.thumbnail})`}}
+                    />
+                ) : (
+                  <div className="book-cover default-cover" />
+                )}
                 <div className="book-shelf-changer">
                   <select
                     onChange={(e) => this.handleShelf(book.id, e.target.value)}
