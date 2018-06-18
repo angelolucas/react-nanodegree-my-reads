@@ -7,6 +7,7 @@ import './index.css'
 
 class SearchBooks extends React.Component {
   state = {
+    query: '',
     books: [],
     status: false
   }
@@ -14,20 +15,20 @@ class SearchBooks extends React.Component {
     body: document.querySelector('body')
   }
   componentDidMount() {
-    this.searchInput.focus();
+    this.searchInput.focus()
   }
   componentWillUnmount() {
-    this.selector.body.classList.remove('hide-my-reads');
+    this.selector.body.classList.remove('hide-my-reads')
   }
   handleShelf = (BookId, shelf) => {
-    this.props.onChangeShelf(BookId, shelf);
+    this.props.onChangeShelf(BookId, shelf)
   }
-  handleSearch = (e) => {
-    const query = e.target.value;
+  handleSearch = (query) => {
+    this.setState({ query })
 
-    if (query.length > 0) {
-      BooksAPI.search(query).then((books) => {
-        this.selector.body.classList.add('hide-my-reads');
+    BooksAPI.search(query).then((books) => {
+      if (books) {
+        this.selector.body.classList.add('hide-my-reads')
 
         if (!books.error) {
           window.scrollTo(0, 0);
@@ -41,14 +42,14 @@ class SearchBooks extends React.Component {
             status: 'noResult'
           })
         }
-      })
-    } else {
-      this.selector.body.classList.remove('hide-my-reads');
+      } else {
+        this.selector.body.classList.remove('hide-my-reads');
 
-      this.setState({
-        status: ''
-      })
-    }
+        this.setState({
+          status: 'emptyQuery'
+        })
+      }
+    })
   }
   render() {
     return (
@@ -60,7 +61,8 @@ class SearchBooks extends React.Component {
               type="text"
               placeholder="Search by title or author"
               ref={(searchInput) => { this.searchInput = searchInput}}
-              onChange={this.handleSearch}
+              onChange={(e) => this.handleSearch(e.target.value)}
+              value={this.state.query}
             />
           </div>
         </div>
