@@ -23,19 +23,22 @@ class SearchBooks extends React.Component {
     this.props.onChangeShelf(BookId, shelf);
   }
   handleSearch = (e) => {
-    if (e.target.value.length > 0) {
-      BooksAPI.search(e.target.value).then((books) => {
-        if (books.error === "empty query") {
-          this.selector.body.classList.add('hide-my-reads');
-          this.setState({
-            status: 'noResult'
-          })
-        } else {
+    const query = e.target.value;
+
+    if (query.length > 0) {
+      BooksAPI.search(query).then((books) => {
+        this.selector.body.classList.add('hide-my-reads');
+
+        if (!books.error) {
           window.scrollTo(0, 0);
-          this.selector.body.classList.add('hide-my-reads');
+
           this.setState({
             books,
             status: 'result'
+          })
+        } else {
+          this.setState({
+            status: 'noResult'
           })
         }
       })
