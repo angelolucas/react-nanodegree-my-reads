@@ -7,8 +7,8 @@ import './index.css'
 
 class SearchBooks extends React.Component {
   state = {
+    searchedBooks: [],
     query: '',
-    books: [],
     status: false
   }
   selector = {
@@ -26,17 +26,19 @@ class SearchBooks extends React.Component {
   handleSearch = (query) => {
     this.setState({ query })
 
-    BooksAPI.search(query).then((books) => {
-      if (books) {
+    BooksAPI.search(query).then((searchedBooks) => {
+      if (searchedBooks) {
         this.selector.body.classList.add('hide-my-reads')
 
-        if (!books.error) {
-          window.scrollTo(0, 0);
+        if (!searchedBooks.error) {
+          this.checkShelf(searchedBooks);
 
           this.setState({
-            books,
+            searchedBooks,
             status: 'result'
           })
+
+          window.scrollTo(0, 0);
         } else {
           this.setState({
             status: 'noResult'
@@ -51,6 +53,21 @@ class SearchBooks extends React.Component {
       }
     })
   }
+
+  checkShelf = (searchedBooks) => {
+    const books = this.props.books
+
+    for (let searchedBook of searchedBooks) {
+      for (let book of books) {
+        if (book.id === searchedBook.id) {
+          searchedBook.shelf = book.shelf
+        }
+      }
+    }
+
+    return searchedBooks
+  }
+
   render() {
     return (
       <div className="search-books">
@@ -69,7 +86,7 @@ class SearchBooks extends React.Component {
         { this.state.status === "result" &&
           <div className="search-books-results">
             <BookCards
-              books={this.state.books}
+              books={this.state.searchedBooks}
               onChangeShelf={this.handleShelf}
             />
           </div>
@@ -86,6 +103,7 @@ class SearchBooks extends React.Component {
 }
 
 SearchBooks.propTypes = {
+  books: PropTypes.array.isRequired,
   onChangeShelf: PropTypes.func.isRequired
 }
 
