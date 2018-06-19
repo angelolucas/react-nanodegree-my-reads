@@ -23,22 +23,25 @@ class BooksApp extends React.Component {
       })
     })
   }
-  changeShelf = (bookId, shelf) => {
-    BooksAPI.get(bookId).then((book) => {
+  changeShelf = (bookToUpdate, newShelf) => {
+    BooksAPI.get(bookToUpdate.id).then((bookToUpdate) => {
       // Change of shelf in the server
-      BooksAPI.update(book, shelf)
+      BooksAPI.update(bookToUpdate, newShelf)
 
-      // Change of shelf in the UI
-      let updateBooks = [];
+      // Change of shelf in the My Reads
+      let newBooksArray = [];
 
-      this.state.books.map((book) => {
-        if (book.id === bookId)
-        book.shelf = shelf
+      bookToUpdate.shelf = newShelf
 
-        updateBooks.push(book)
+      newBooksArray.push(bookToUpdate)
+
+      this.state.books.forEach((book) => {
+        if (book.id !== bookToUpdate.id) {
+          newBooksArray.push(book)
+        }
       })
 
-      this.setState({books: updateBooks})
+      this.setState({books: newBooksArray})
     })
   }
   render() {

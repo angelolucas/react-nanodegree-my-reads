@@ -20,8 +20,15 @@ class SearchBooks extends React.Component {
   componentWillUnmount() {
     this.selector.body.classList.remove('hide-my-reads')
   }
-  handleShelf = (BookId, shelf) => {
-    this.props.onChangeShelf(BookId, shelf)
+  handleShelf = (bookToUpdate, newShelf) => {
+    // Change of shelf in the Searched Books
+    this.state.searchedBooks.forEach((searchedBook) => {
+      if (bookToUpdate.id === searchedBook.id)
+        searchedBook.shelf = newShelf
+    })
+
+    // Change of shelf in the server and setState
+    this.props.onChangeShelf(bookToUpdate, newShelf)
   }
   handleSearch = (query) => {
     this.setState({ query })
@@ -31,7 +38,7 @@ class SearchBooks extends React.Component {
         this.selector.body.classList.add('hide-my-reads')
 
         if (!searchedBooks.error) {
-          this.checkShelf(searchedBooks);
+          this.checkShelfOnSearch(searchedBooks);
 
           this.setState({
             searchedBooks,
@@ -53,8 +60,7 @@ class SearchBooks extends React.Component {
       }
     })
   }
-
-  checkShelf = (searchedBooks) => {
+  checkShelfOnSearch = (searchedBooks) => {
     const books = this.props.books
 
     for (let searchedBook of searchedBooks) {
@@ -67,7 +73,6 @@ class SearchBooks extends React.Component {
 
     return searchedBooks
   }
-
   render() {
     return (
       <div className="search-books">

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import './index.css'
 
 class BookCards extends React.Component {
-  handleShelf = (BookId, shelf) => {
-    this.props.onChangeShelf(BookId, shelf)
+  handleShelf = (bookToUpdate, newShelf) => {
+    this.props.onChangeShelf(bookToUpdate, newShelf)
   }
   render() {
     const books = this.props.books
@@ -26,7 +26,7 @@ class BookCards extends React.Component {
                 )}
                 <div className="book-card__shelf">
                   <select
-                    onChange={(e) => this.handleShelf(book.id, e.target.value)}
+                    onChange={(e) => this.handleShelf(book, e.target.value)}
                     value={book.shelf ? book.shelf : 'none'}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>

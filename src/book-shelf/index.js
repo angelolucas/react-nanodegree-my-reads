@@ -4,8 +4,8 @@ import BookCards from '../book-cards'
 import './index.css'
 
 class BookShelf extends React.Component {
-  handleShelf = (BookId, shelf) => {
-    this.props.onChangeShelf(BookId, shelf)
+  handleShelf = (bookToUpdate, newShelf) => {
+    this.props.onChangeShelf(bookToUpdate, newShelf)
   }
   render() {
     return (

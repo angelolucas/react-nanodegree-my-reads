@@ -5,8 +5,8 @@ import BookShelf from '../book-shelf'
 import './index.css'
 
 class MyReads extends React.Component {
-  handleShelf = (BookId, shelf) => {
-    this.props.onChangeShelf(BookId, shelf)
+  handleShelf = (bookToUpdate, newShelf) => {
+    this.props.onChangeShelf(bookToUpdate, newShelf)
   }
   render() {
     return (
