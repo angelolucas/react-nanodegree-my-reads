@@ -1,20 +1,13 @@
 body.hide-my-reads .my-reads {
   display: none;
 }
-
 .bookshelf {
-  padding: 0 10px 20px;
+  margin-bottom: 8vw;
 }
-
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
+.bookshelf:last-child {
+  margin-bottom: 0;
 }
-
-.bookshelf-title {
+.bookshelf__title {
   border-bottom: 1px solid #dedede;
-}
-.bookshelf-books {
-  text-align: center;
+  margin-bottom: 4vw;
 }

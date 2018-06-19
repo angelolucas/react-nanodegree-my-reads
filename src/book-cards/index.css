@@ -1,4 +1,5 @@
-.books-grid {
+/* List cards */
+.list-books {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -7,33 +8,45 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.books-grid li {
+.list-books li {
   padding: 10px 15px;
   text-align: left;
 }
 
-.book {
+/* Book Card */
+.book-card {
   width: 140px;
-}
-.book-title,
-.book-authors {
-  font-size: 0.8em;
-}
-.book-title {
-  margin-top: 10px;
-}
-.book-authors {
-  color: #999;
-}
-
-.book-top {
   position: relative;
-  height: 200px;
+}
+.book-card__top {
+  position: relative;
   display: flex;
   align-items: flex-end;
 }
-
-.book-shelf-changer {
+.book-card__cover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 128px;
+  height: 192px;
+}
+.book-card__cover--default {
+  background-image: url('../icons/book.svg');
+  background-size: 70%;
+}
+.book-card__title,
+.book-card__authors {
+  font-size: 0.8em;
+}
+.book-card__title {
+  margin-top: 10px;
+}
+.book-card__authors {
+  color: #999;
+}
+.book-card__shelf {
   position: absolute;
   right: 0;
   bottom: -10px;
@@ -46,30 +59,19 @@
   background-position: center;
   background-size: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  z-index: 1;
 }
-.book-shelf-changer select {
+.book-card__shelf select {
   width: 100%;
   height: 100%;
   opacity: 0;
   cursor: pointer;
 }
-
-/* book cover */
-.book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  background-color: #eee;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 128px;
-  height: 192px;
-}
-.book-cover.default-cover {
-  background-image: url('../icons/book.svg');
-  background-size: 70%;
-}
-.book-cover-title {
-  padding: 20px 10px 0;
-  text-align: center;
-  font-size: 0.8em;
+.book-card__detail {
+  font-size: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

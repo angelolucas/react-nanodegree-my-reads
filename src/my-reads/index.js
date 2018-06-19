@@ -11,11 +11,11 @@ class MyReads extends React.Component {
   render() {
     return (
       <div className="my-reads">
-        <div className="my-reads-head">
-          <h1 className="my-reads-title">MyReads</h1>
-          <Link className="open-search" to="/search">Add a book</Link>
+        <div className="my-reads__top">
+          <h1 className="my-reads__title">MyReads</h1>
+          <Link className="my-reads__search" to="/search">Add a book</Link>
         </div>
-        <div className="my-reads-content">
+        <div className="my-reads__content">
           <BookShelf
             title="Currently Reading"
             onChangeShelf={this.handleShelf}

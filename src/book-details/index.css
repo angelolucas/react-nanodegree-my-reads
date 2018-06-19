@@ -1,4 +1,4 @@
-.book-details-head {
+.book-details__top {
   position: fixed;
   width: 100%;
   top: 0;
@@ -8,31 +8,32 @@
   background: #2e7c31;
   z-index: 1;
 }
-.go-back {
+.book-details__go-back {
   display: block;
   top: 20px;
   left: 15px;
-  width: 50px;
+  width: calc(4vw + 40px);
   height: 50px;
   background-image: url('../icons/arrow-back.svg');
-  background-position: center;
+  background-position: 4vw center;
   background-repeat: no-repeat;
   background-size: 28px;
   font-size: 0;
 }
 
-.book-title {
+.book-details__title {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   color: white;
 }
 
-.book-content {
-  padding: 50px 20px 40px;
+.book-details__content {
+  margin-top: 50px;
+  padding: 4vw;
 }
 
-.book-cover {
+.book-details__cover {
   float: left;
   max-width: 130px;
   margin: 0 15px 15px 0;

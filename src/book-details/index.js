@@ -26,12 +26,12 @@ class BookDetail extends React.Component {
     const book = this.state.book
 
     return(
-      <div>
-        <div className="book-details-head">
-          <Link to="/" className="go-back">Back</Link>
-          <h1 className="book-title">{book.title}</h1>
+      <div className="book-details">
+        <div className="book-details__top">
+          <Link to="/" className="book-details__go-back">Back</Link>
+          <h1 className="book-details__title">{book.title}</h1>
         </div>
-        <main className="book-content">
+        <main className="book-details__content">
           <h2>{book.subtitle}</h2>
           <p>{book.authors}</p>
           <p>{book.publishedDate}</p>
@@ -39,13 +39,12 @@ class BookDetail extends React.Component {
           <p>{book.pageCount} pages</p>
           <p>{book.publisher}</p>
           {book.imageLinks && (
-            <img className="book-cover" src={book.imageLinks.thumbnail} alt="Book cover" />
+            <img className="book-details__cover" src={book.imageLinks.thumbnail} alt="Book cover" />
           )}
           <p>{book.description}</p>
           <a href={book.infoLink} target="_blank">see more</a>
         </main>
       </div>
-
     )
   }
 }

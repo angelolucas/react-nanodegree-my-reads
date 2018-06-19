@@ -11,20 +11,20 @@ class BookCards extends React.Component {
     const books = this.props.books
 
     return (
-      <ol className="books-grid">
+      <ol className="list-books">
         {books.map((book, key) => (
           <li key={key}>
-            <div className="book">
-              <div className="book-top">
+            <div className="book-card">
+              <div className="book-card__top">
                 {book.imageLinks ? (
                   <div
-                    className="book-cover"
+                    className="book-card__cover"
                     style={{backgroundImage: `url(${book.imageLinks.thumbnail})`}}
                     />
                 ) : (
-                  <div className="book-cover default-cover" />
+                  <div className="book-card__cover book-card__cover--default" />
                 )}
-                <div className="book-shelf-changer">
+                <div className="book-card__shelf">
                   <select
                     onChange={(e) => this.handleShelf(book.id, e.target.value)}
                     value={book.shelf ? book.shelf : 'none'}>
@@ -36,9 +36,9 @@ class BookCards extends React.Component {
                   </select>
                 </div>
               </div>
-              <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.subtitle}</div>
-              <Link to={"/book/" + book.id}>Book details</Link>
+              <div className="book-card__title">{book.title}</div>
+              <div className="book-card__authors">{book.subtitle}</div>
+              <Link className="book-card__detail" to={"/book/" + book.id}>Book details</Link>
             </div>
           </li>
         ))}

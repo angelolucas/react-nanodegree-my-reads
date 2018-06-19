@@ -1,4 +1,4 @@
-.search-books-bar {
+.search-books__top {
   position: fixed;
   width: 100%;
   top: 0;
@@ -7,35 +7,38 @@
   display: flex;
   background: #2e7c31;
 }
-.search-books-input-wrapper {
-  flex: 1;
-}
-.search-books-bar input {
-  background: transparent;
-  width: 100%;
-  padding: 14px 10px 13px;
-  font-size: 1.25em;
-  border: none;
-  outline: none;
-  color: white;
-}
-.search-books-bar input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.close-search {
+.search-books__go-back {
   display: block;
   top: 20px;
   left: 15px;
-  width: 50px;
+  width: calc(4vw + 40px);
   height: 50px;
   background-image: url('../icons/arrow-back.svg');
-  background-position: center;
+  background-position: 4vw center;
   background-repeat: no-repeat;
   background-size: 28px;
   font-size: 0;
 }
-
-.search-books-results {
-  padding: 80px 10px 20px;
+.search-books__input-wrapper {
+  flex: 1;
+}
+.search-books__input-wrapper input {
+  background: transparent;
+  width: 100%;
+  padding: 14px 10px 13px 0;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+}
+.search-books__input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.search-books__results {
+  margin-top: 50px;
+  padding: 4vw;
+}
+.search-books__title {
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 4vw;
 }
