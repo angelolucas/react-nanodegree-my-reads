@@ -15,6 +15,7 @@ class BooksApp extends React.Component {
   }
   getBooks = () => {
     BooksAPI.getAll().then((books) => {
+
       this.setState({
         books,
         ready: true
@@ -23,8 +24,20 @@ class BooksApp extends React.Component {
   }
   changeShelf = (bookId, shelf) => {
     BooksAPI.get(bookId).then((book) => {
+      // Change of shelf in the server
       BooksAPI.update(book, shelf)
-      this.getBooks()
+
+      // Change of shelf in the UI
+      let updateBooks = [];
+
+      this.state.books.map((book) => {
+        if (book.id === bookId)
+        book.shelf = shelf
+
+        updateBooks.push(book)
+      })
+
+      this.setState({books: updateBooks})
     })
   }
   render() {
