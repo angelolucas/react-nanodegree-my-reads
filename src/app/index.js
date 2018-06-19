@@ -55,7 +55,9 @@ class BooksApp extends React.Component {
             <MyReads books={this.state.books} onChangeShelf={this.changeShelf} />
           )} />
         )}
-        <Route path="/book" component={BookDetails} />
+        <Route path="/book" render={() => (
+            <BookDetails onChangeShelf={this.changeShelf} />
+        )} />
       </div>
     )
   }
