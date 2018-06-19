@@ -32,9 +32,29 @@
   margin-top: 50px;
   padding: 4vw;
 }
-
+.book-details__subtitle {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 2vw;
+}
+.book-details__info {
+  list-style: none;
+  margin-bottom: 4vw;
+}
+.book-details__info li {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #5a5a5a;
+}
 .book-details__cover {
   float: left;
   max-width: 130px;
-  margin: 0 15px 15px 0;
+  margin: 0 4vw 4vw 0;
+}
+.book-details__description {
+  margin-bottom: 4vw;
+}
+.book-details__link {
+  color: #60ac5d;
 }
