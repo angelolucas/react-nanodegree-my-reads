@@ -61,6 +61,9 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   z-index: 1;
 }
+.book-card__shelf--add {
+  background-image: url('../icons/add.svg');
+}
 .book-card__shelf select {
   width: 100%;
   height: 100%;

@@ -24,7 +24,7 @@ class BookCards extends React.Component {
                 ) : (
                   <div className="book-card__cover book-card__cover--default" />
                 )}
-                <div className="book-card__shelf">
+                <div className={"book-card__shelf " + (book.shelf ? "book-card__shelf--change" : "book-card__shelf--add")}>
                   <select
                     onChange={(e) => this.handleShelf(book, e.target.value)}
                     value={book.shelf ? book.shelf : 'none'}>
