@@ -28,27 +28,25 @@ class BookDetail extends React.Component {
 
     return(
       <div className="book-details">
-        <div className="book-details__top">
-          <Link to="/" className="book-details__go-back">Back</Link>
-          <h1 className="book-details__title">
-            {book.title}
-          </h1>
-        </div>
-        <main className="book-details__content">
-          <h2 className="book-details__subtitle">{book.subtitle}</h2>
-          <ul className="book-details__info">
-            <li>{book.authors}</li>
-            <li>{book.publishedDate}</li>
-            <li>{book.categories}</li>
-            <li>{book.pageCount} pages</li>
-            <li>{book.publisher}</li>
-          </ul>
-          {book.imageLinks && (
-            <img className="book-details__cover" src={book.imageLinks.thumbnail} alt="Book cover" />
-          )}
-          <p className="book-details__description">{book.description}</p>
-          <a className="book-details__link" href={book.infoLink} target="_blank">See on Google Books</a>
-        </main>
+        <Link to="/" className="book-details__go-back">Back</Link>
+        {this.state.book && (
+          <main className="book-details__content">
+            <h1 className="book-details__title">{book.title}</h1>
+            <h2 className="book-details__subtitle">{book.subtitle}</h2>
+            <ul className="book-details__info">
+              <li>{book.authors}</li>
+              <li>{book.publishedDate}</li>
+              <li>{book.categories}</li>
+              <li>{book.pageCount} pages</li>
+              <li>{book.publisher}</li>
+            </ul>
+            {book.imageLinks && (
+              <img className="book-details__cover" src={book.imageLinks.thumbnail} alt="Book cover" />
+            )}
+            <p className="book-details__description">{book.description}</p>
+            <a className="book-details__link" href={book.infoLink} target="_blank">See on Google Books</a>
+          </main>
+        )}
       </div>
     )
   }

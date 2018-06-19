@@ -1,39 +1,31 @@
-.book-details__top {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  background: #2e7c31;
-  z-index: 1;
-}
 .book-details__go-back {
   display: block;
   top: 20px;
   left: 15px;
   width: calc(4vw + 40px);
   height: 50px;
+  background-color: #2e7c31;
   background-image: url('../icons/arrow-back.svg');
   background-position: 4vw center;
   background-repeat: no-repeat;
   background-size: 28px;
   font-size: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
-
 .book-details__title {
-  font-weight: 400;
-  font-size: 20px;
-  margin: 0;
-  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 2vw;
 }
-
 .book-details__content {
-  margin-top: 50px;
   padding: 4vw;
+  margin-top: 50px;
 }
 .book-details__subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: normal;
   margin-bottom: 2vw;
 }
