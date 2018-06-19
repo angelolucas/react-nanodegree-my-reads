@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './index.css'
 
@@ -37,6 +38,7 @@ class BookCards extends React.Component {
               </div>
               <div className="book-title">{book.title}</div>
               <div className="book-authors">{book.subtitle}</div>
+              <Link to={"/book/" + book.id}>Book details</Link>
             </div>
           </li>
         ))}

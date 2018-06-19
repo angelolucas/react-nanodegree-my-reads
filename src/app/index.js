@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import SearchBooks from '../search-books'
 import MyReads from '../my-reads'
+import BookDetails from '../book-details'
 import './index.css'
 
 class BooksApp extends React.Component {
@@ -51,6 +52,7 @@ class BooksApp extends React.Component {
             <MyReads books={this.state.books} onChangeShelf={this.changeShelf} />
           )} />
         )}
+        <Route path="/book" component={BookDetails} />
       </div>
     )
   }
