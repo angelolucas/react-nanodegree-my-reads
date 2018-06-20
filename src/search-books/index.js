@@ -34,7 +34,7 @@ class SearchBooks extends React.Component {
     this.setState({ query })
 
     BooksAPI.search(query).then((searchedBooks) => {
-      if (searchedBooks) {
+      if (searchedBooks && query === this.state.query) {
         this.selector.body.classList.add('hide-my-reads')
 
         if (!searchedBooks.error) {
